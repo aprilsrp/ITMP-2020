@@ -10,25 +10,23 @@
 	<div id="canvas">
 		<section id="canvas_header">
 			<div>
-				เหลือเวลา 10 วินาที
+				เหลือเวลา {{time}} วินาที
 			</div>
 		</section>
 		<section id="canvas_main">
 			<main>
-				<a-dot></a-dot>
-				<a-dot></a-dot>
-				<a-dot></a-dot>
-				<a-dot></a-dot>
-				<a-dot></a-dot>
-				<a-dot style="--l:80%"></a-dot>
-				<a-dot data-pick="true"></a-dot>
-				<a-dot></a-dot>
-				<a-dot></a-dot>
+				<a-dot v-for="i in row*row"
+				:style="{
+				'--row':row,
+				'--h':h
+				}"
+				></a-dot>
+				
 			</main>
 		</section>
 		<section id="canvas_footer">
 			<div>
-				0 คะแนน
+				{{score}} คะแนน
 			</div>
 		</section>
 	</div>
@@ -45,7 +43,7 @@
 		let app = new Vue({
 			el:'#canvas',
 			data:{
-				row:2, //จำนวนแถวที่จะมีในรอบนี้
+				row:3, //จำนวนแถวที่จะมีในรอบนี้
 				h:330, // hue ในรอบนี้
 				time:10, //เวลาเริ่มต้น
 				score:0, //คะแนนเริ่มต้น
@@ -53,6 +51,7 @@
 				l:30,//ความสว่างของสีทั่วไปในรอบนี้
 			},
 			methods: {
+				// check : function
 
 			}
 		})
