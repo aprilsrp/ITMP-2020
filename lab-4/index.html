@@ -56,9 +56,29 @@
 			},
 			methods: {
 				check : function(e){
+					if(this.time > 0){
+						if(e.target.dataset.pick){
+							this.score += 1
+							this.time += 2
+							this.correct()
+						}
+						else{
+							this.time -= 1
+							this.pick = rand(1,this.row*this.row)
+							this.h = rand(0,360)
+						}		
+					}
 					console.log(e)
-					console.log(e.target)
-					console.log(e.target.dataset.pick)
+					//console.log(e.target)
+					//console.log(e.target.dataset.pick)
+
+				},
+				correct : function(){
+					this.row = rand(2,4)
+					this.pick = rand(1,this.row*this.row)
+					this.h = rand(0,360)
+					picklight = rand(25,40)+'%'
+					document.querySelector('#canvas').style.setProperty('--picklight',picklight);
 
 				}
 
