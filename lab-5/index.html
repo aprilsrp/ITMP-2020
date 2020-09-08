@@ -76,9 +76,8 @@
 					for(let i in this.fruits){
 						let f = this.fruits[i]
 						if(f.run){
-							if(f.pst == 10){
-								f.step = this.isRightArrow*2+1
-							}
+							if(f.pst == 10) f.step = this.isRightArrow*2+1
+								//ไม่ต้อง {} 
 							if([12,16].indexOf(f.pst) != -1){
 								f.run = false
 								// หยุด
@@ -110,9 +109,10 @@
 
 		let playing = setInterval(function(){
 				app.turn++	
-				if(rand(0,2)){
+				if(rand(0,4)){
+					// rand(0,1) ? = type 
 					let type = 'red'
-					if(rand(0,2)){
+					if(rand(0,1)){
 						type = 'yellow'
 					}
 					app.fruits.push({id:fruitCount,type:type,pst:0,run:true,step:1})
