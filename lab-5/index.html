@@ -10,7 +10,7 @@
 	<div id="canvas">
 		<section id="canvas_header">
 			<div>
-				-- แสดงคะแนน
+				{{score}} คะแนน
 			</div>
 		</section>
 		<section id="canvas_main" 
@@ -19,9 +19,9 @@
 				<div class="box _path" 
 				v-for="i in 14" 
 				:data-pst="i"></div>
-				<div class="box _toggle" data-pst="10" data-isrightarrow="1"></div>
+				<div class="box _toggle" data-pst="10" :data-isrightarrow="isRightArrow"></div>
 
-				<div class="box _fruit"></div>
+				<div class="box _fruit "  v-for="f in fruits" :data-type="f.type" :data-pst="f.pst"></div>
 
 				<div class="box _origin"></div>
 				<div class="box _12" data-pst="12"></div>
@@ -30,11 +30,12 @@
 			</main>
 		</section>
 		<section id="canvas_footer">
-			<div v-if="play" class="btn" id="toggle">
+			<div v-if="play" class="btn" id="toggle" @click = "toggle">
 				Toggle
 			</div>
-			<div v-if="!play" class="btn" id="endgame">
-				Ene Game
+			<div v-if="!play" class="btn" id="endgame" onclick="location.reload()">
+				<!-- reload -->
+				Play Again!
 			</div>
 		</section>
 	</div>
@@ -45,23 +46,82 @@
 			return Math.floor(Math.random()*100%shift)+start
 		}
 		
-		let fruitCount = 5
+		let fruitCount = 3 //nextFruit
 		let isRightArrow = 1
 		let speed = 1000
 		let app = new Vue({
 			el:'#canvas',
 			data:{
+				isRightArrow:1,
+				speed:speed,
 				play:true,
-				time:0,
+				turn:0,
 				score:0,
 				fruits:[
-					{id:1,type:13,pst:6,run:true,step:1},
-					{id:2,type:11,pst:3,run:true,step:1},
-					{id:3,type:11,pst:2,run:true,step:1},
-					{id:4,type:13,pst:1,run:true,step:1},
+					{id:1,type:'red',pst:5,run:true,step:1},
+					{id:2,type:'yellow',pst:2,run:true,step:1},
+					
 				]
+			},
+			methods:{
+				toggle: function(){
+					this.isRightArrow = 1-this.isRightArrow
+					//สมการ toggle
+				}
+			},
+			computed:{},
+			watch:{
+				turn: function(){
+					// let count = this.fruits.length
+					for(let i in this.fruits){
+						let f = this.fruits[i]
+						if(f.run){
+							if(f.pst == 10){
+								f.step = this.isRightArrow*2+1
+							}
+							if([12,16].indexOf(f.pst) != -1){
+								f.run = false
+								// หยุด
+								if([12,16].indexOf(f.pst) == ['red','yellow'].indexOf(f.type)){
+									this.score++
+									//ถุก
+								}else{
+									this.play = false
+									clearInterval(playing)
+									//ผิก จบเกม
+								}
+
+							}else{
+								f.pst += f.step
+							}
+						
+						}
+						
+						// let run = this.fruits[f].run
+						// if(run) {
+						// 	this.fruits[f].pst = this.fruits[f].pst+1
+						// }
+						// console.log()
+					}
+				}
 			}
+
 		})
+
+		let playing = setInterval(function(){
+				app.turn++	
+				if(rand(0,2)){
+					let type = 'red'
+					if(rand(0,2)){
+						type = 'yellow'
+					}
+					app.fruits.push({id:fruitCount,type:type,pst:0,run:true,step:1})
+					//สร้าง fruits
+					fruitCount++
+					// id++
+
+				}
+		},speed)
 	</script>
 </body>
 </html>

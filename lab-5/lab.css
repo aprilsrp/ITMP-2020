@@ -17,15 +17,15 @@ body{
 #canvas_header,
 #canvas_footer{
 	background-color: brown;
-	background-image: url('tile-grass.jpg');
+	background-image: url('cow.jpg');
 	background-size: 20%;
 	height: 50px;
 	color: white;
 	font-weight: bold;
 }
 #canvas_main{
-	background-color: grey;
-	background-image: url('tile-rock.jpg');
+	background-color: #93edb0;
+	/*background-image: url('tile-rock.jpg');*/
 	background-size: 20%;
 	height: 400px;
 	opacity: .2;
@@ -77,14 +77,14 @@ div.box{
 
 
 .box._12{
-	background-color: red;
+	background-color: #82a8cf;
 }
 .box._16{
-	background-color: yellow;
+	background-color: #fbb4c2;
 }
 .box._path{
-	background-color: black;
-	background-image: url('tile-wood.jpg');
+	background-color: #f5ecda;
+	/*background-image: url('dir.png');*/
 	background-size: cover;
 	transform: rotate(0deg);
 }
@@ -101,7 +101,7 @@ div.box{
 	border: 3px solid #fffc;
 	transform: scale(.6);
 }
-.box._fruit[data-type="11"]{
+.box._fruit[data-type="red"]{
 	background-color: red;
 }
 
