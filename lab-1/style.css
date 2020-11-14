@@ -1,0 +1,42 @@
+:root{
+	--ci1:#000;
+	--ci2:#666;
+	--ci3:#888;
+	--link:var(--ci1);
+	--link-hover:var(--ci2);
+	--btn-bg:var(--ci1);
+	--btn-bg-hover:var(--ci2);
+	--nav-link:var(--ci1);
+	--nav-hover:var(--ci2);
+	--bg-color:#fbfbfb;
+	--text-color:#333;
+	--box-shadow:0 0 0 1px rgba(0,0,0,.04), 0 2px 4px 0 rgba(0,0,0,.08);
+	--pmr-font:var(--font-anuphan);
+	--txt-font:var(--font-ibm-loop);
+}
+
+/*.
+.
+=========================================================================
+	Default
+=========================================================================
+.
+.*/
+
+html,body{
+	font-family: var(--txt-font);
+	-webkit-font-smoothing: antialiased;
+	box-sizing: border-box;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	margin:0;
+	width: 100%;
+}
+body, button, input, select, optgroup, textarea{
+	font-family: var(--txt-font);
+	border-color: #4500E2;
+}
+h1,h2,h3,h4,h5,h6{
+	margin: 0rem;
+	padding: 0rem;
+}

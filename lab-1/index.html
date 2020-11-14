@@ -2,21 +2,30 @@
 <html>
 <head>
 	<title>Lab - Multimedia Programming 2563 ITKMITL</title>
-	<link rel=stylesheet href="../src/reset.css">
-	<link rel=stylesheet href="lab.css">
+    <link rel="stylesheet" type="text/css" href="https://jabont.com/jayss/jayss2.css">
+	<link rel=stylesheet href="style.css">
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
-<body class="paper">
-	<div id="app">
-		<input type="number" v-model="n">
-		<input type="number" v-model="row">
-		<div class="space"></div>
-		<h3>สูตรคูณแม่ {{n}}</h3>
-		<h5>แม่ก่อนหน้า อิส {{before_n}}</h5>
-		<h4 v-for='i in r'>
-			{{n}} x {{i}} = {{result(i)}}
-		</h4>
-	</div>
+<body class="paper" >
+
+	<section id="type" class="padding-xl-vtc t-center">
+		<div id="app">
+			<center><input type="number" v-model="n" class="t-center col-6">
+			<sp class="s"></sp>
+			<input type="number" v-model="row" class="t-center col-6"></center>
+			<sp class="l"></sp>
+			<div class="space">
+			<h3>สูตรคูณแม่ {{n}}</h3>
+			<sp class="s"></sp>
+			<h5>แม่ก่อนหน้า {{before_n}}</h5>
+			<sp class="rm"></sp>
+			<h4 v-for='i in r'>
+				{{n}} x {{i}} = {{result(i)}}
+			</h4>
+			</div>
+
+		</div>
+	</section>
 
 	<script>
 		let app = new Vue({
